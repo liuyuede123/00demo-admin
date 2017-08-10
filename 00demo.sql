@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-08-03 04:30:30
+-- Generation Time: 2017-08-10 04:03:32
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -722,20 +722,6 @@ INSERT INTO `by_grade` (`id`, `name`) VALUES
 (4, 'VIP客户'),
 (5, '至尊客户');
 
--- --------------------------------------------------------
-
---
--- 替换视图以便查看 `by_live_private_today`
---
-CREATE TABLE IF NOT EXISTS `by_live_private_today` (
-);
--- --------------------------------------------------------
-
---
--- 替换视图以便查看 `by_live_today`
---
-CREATE TABLE IF NOT EXISTS `by_live_today` (
-);
 -- --------------------------------------------------------
 
 --
@@ -27152,24 +27138,6 @@ INSERT INTO `by_video_category` (`id`, `name`, `tpl`) VALUES
 (2, '理财A+B', 'video_licaiab_list'),
 (4, '公司视频', 'video_list'),
 (5, '投资A+B', 'video_touziab_list');
-
--- --------------------------------------------------------
-
---
--- 视图结构 `by_live_private_today`
---
-DROP TABLE IF EXISTS `by_live_private_today`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `by_live_private_today` AS select `by_live_private`.`id` AS `id`,`by_live_private`.`mid` AS `mid`,`by_live_private`.`is_admin` AS `is_admin`,`by_live_private`.`time` AS `time`,`by_live_private`.`content` AS `content` from `by_live_private` where (date_format(`by_live_private`.`time`,'%Y%m%d') = date_format(now(),'%Y%m%d'));
-
--- --------------------------------------------------------
-
---
--- 视图结构 `by_live_today`
---
-DROP TABLE IF EXISTS `by_live_today`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `by_live_today` AS select `by_live`.`id` AS `id`,`by_live`.`name` AS `name`,`by_live`.`lid` AS `lid`,`by_live`.`content` AS `content`,`by_live`.`time` AS `time`,`by_live`.`del` AS `del`,`by_live`.`is_top` AS `is_top` from `by_live` where (date_format(`by_live`.`time`,'%Y%m%d') = date_format(now(),'%Y%m%d'));
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
